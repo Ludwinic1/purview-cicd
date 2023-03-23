@@ -3,8 +3,8 @@
 **Automatically extract all of the collections from a source Purview and deploy them to a target Purview.** 
 
 Examples:
-- Create all of the collections from a DEV Purview into a UAT and/or PROD Purview.
-- Incrementally update your environments. If you create an additional collection in a DEV Purview, deploy it quickly to your upper environments.
+- Create all of the collections from a DEV Purview into a UAT and/or PROD Purview
+- Incrementally update your environments. If you create an additional collection in a DEV Purview, deploy it quickly to your upper environments
 
 ## Instructions
 
