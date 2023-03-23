@@ -36,7 +36,6 @@ def main():
     }
      
     def create_collection(collection: str, parent_collection_name: str = None):
-        # Write quick code to check if collection already exists in target purview. If not, then run the following if so log that it already exists).
         collection_info = get_request(url=f"{source_collections_endpoint}/{collection}?api-version={collections_api_version}", headers=headers)
         
         if not parent_collection_name:
