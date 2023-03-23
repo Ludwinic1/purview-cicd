@@ -1,0 +1,31 @@
+name: Purview Collections Azure Pipelines CICD
+
+# Extracts collections from a source Purview account and creates the collections in a target Purview account
+
+trigger: none
+
+parameters:
+- name: SourcePurviewAccountName
+  displayName: Source Purview Account Name
+  type: string 
+
+- name: TargetPurviewAccountName
+  displayName: Target Purview Account Name
+  type: string
+
+steps:
+- task: PythonScript@0
+  displayName: Run Python Collections Script
+  inputs:
+    scriptSource: 'filepath'
+    scriptPath: "$(System.DefaultWorkingDirectory)/purview_cicd/collections_azure_pipelines.py"
+    failOnStderr: true
+  env:
+    SOURCE_PURVIEW_CLIENT_ID: $(source-purview-client-id)
+    SOURCE_PURVIEW_CLIENT_SECRET: $(source-purview-client-secret)
+    SOURCE_TENANT_ID: $(source-tenant-id)
+    TARGET_PURVIEW_CLIENT_ID: $(target-purview-client-id)
+    TARGET_PURVIEW_CLIENT_SECRET: $(target-purview-client-secret)
+    TARGET_TENANT_ID: $(target-tenant-id)
+    SOURCE_PURVIEW_ACCOUNT_NAME: ${{ parameters.SourcePurviewAccountName }}
+    TARGET_PURVIEW_ACCOUNT_NAME: ${{ parameters.TargetPurviewAccountName }}
