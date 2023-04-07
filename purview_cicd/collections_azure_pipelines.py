@@ -67,7 +67,7 @@ def main():
     collections = get_request(url=f"{source_collections_endpoint}?api-version={collections_api_version}", headers=headers)
 
     root_real_name = [coll["name"] for coll in collections["value"] if "parentCollection" not in coll][0]
-    root_children = [coll["name"] for coll in collections["value"] if "parentCollection" in coll and coll["parentCollection"]["referenceName"] == root_real_name]
+    root_children = [coll["name"] for coll in collections["value"] if "parentCollection" in coll and coll["parentCollection"]["referenceName"] == root_real_name.lower()] # Purview lowercases the parent collection name under the hood
         
     # Create the root children collections first
     for coll in root_children:
